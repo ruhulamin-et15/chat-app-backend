@@ -36,6 +36,7 @@ const getSingleUser = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+//update user
 const updateUser = catchAsync(async (req: Request, res: Response) => {
   const updatedUser = await userService.updateUserIntoDB(
     req.params.id,
@@ -49,6 +50,7 @@ const updateUser = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+//delete user
 const deleteUser = catchAsync(async (req: Request, res: Response) => {
   const deletedUser = await userService.deleteUserIntoDB(req.params.id);
   sendResponse(res, {
