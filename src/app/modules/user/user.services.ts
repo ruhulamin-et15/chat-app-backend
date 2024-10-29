@@ -67,9 +67,6 @@ const updateUserIntoDB = async (id: number, userData: any) => {
 
 //delete user
 const deleteUserIntoDB = async (id: number) => {
-  if (!ObjectId.isValid(id)) {
-    throw new ApiError(400, "Invalid user ID format");
-  }
   const existingUser = await prisma.user.findUnique({ where: { id } });
   if (!existingUser) {
     throw new ApiError(404, "user not found for delete this");

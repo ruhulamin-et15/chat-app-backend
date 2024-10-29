@@ -5,6 +5,7 @@ import { userService } from "./user.services";
 
 // register user
 const createUser = catchAsync(async (req: Request, res: Response) => {
+  console.log(req.body)
   const result = await userService.createUserIntoDB(req.body);
   sendResponse(res, {
     success: true,
