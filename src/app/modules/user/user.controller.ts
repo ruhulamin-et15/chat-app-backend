@@ -27,7 +27,8 @@ const getUsers = catchAsync(async (req: Request, res: Response) => {
 
 //get single user
 const getSingleUser = catchAsync(async (req: Request, res: Response) => {
-  const user = await userService.getSingleUserIntoDB(req.params.id);
+  const userId = req.params.id;
+  const user = await userService.getSingleUserIntoDB(parseInt(userId));
   sendResponse(res, {
     success: true,
     statusCode: 200,
@@ -38,8 +39,9 @@ const getSingleUser = catchAsync(async (req: Request, res: Response) => {
 
 //update user
 const updateUser = catchAsync(async (req: Request, res: Response) => {
+  const userId = req.params.id;
   const updatedUser = await userService.updateUserIntoDB(
-    req.params.id,
+    parseInt(userId),
     req.body
   );
   sendResponse(res, {
@@ -52,7 +54,8 @@ const updateUser = catchAsync(async (req: Request, res: Response) => {
 
 //delete user
 const deleteUser = catchAsync(async (req: Request, res: Response) => {
-  const deletedUser = await userService.deleteUserIntoDB(req.params.id);
+  const userId = req.params.id;
+  const deletedUser = await userService.deleteUserIntoDB(parseInt(userId));
   sendResponse(res, {
     success: true,
     statusCode: 200,

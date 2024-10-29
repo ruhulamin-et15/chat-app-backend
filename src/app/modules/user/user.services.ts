@@ -37,7 +37,7 @@ const getUsersIntoDB = async () => {
 };
 
 //get single user
-const getSingleUserIntoDB = async (id: string) => {
+const getSingleUserIntoDB = async (id: number) => {
   if (!ObjectId.isValid(id)) {
     throw new ApiError(400, "Invalid user ID format");
   }
@@ -49,7 +49,7 @@ const getSingleUserIntoDB = async (id: string) => {
 };
 
 //update user
-const updateUserIntoDB = async (id: string, userData: any) => {
+const updateUserIntoDB = async (id: number, userData: any) => {
   if (!ObjectId.isValid(id)) {
     throw new ApiError(400, "Invalid user ID format");
   }
@@ -66,7 +66,7 @@ const updateUserIntoDB = async (id: string, userData: any) => {
 };
 
 //delete user
-const deleteUserIntoDB = async (id: string) => {
+const deleteUserIntoDB = async (id: number) => {
   if (!ObjectId.isValid(id)) {
     throw new ApiError(400, "Invalid user ID format");
   }
