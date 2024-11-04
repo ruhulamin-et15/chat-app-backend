@@ -5,7 +5,6 @@ import { userService } from "./user.services";
 
 // register user
 const createUser = catchAsync(async (req: Request, res: Response) => {
-  console.log(req.body)
   const result = await userService.createUserIntoDB(req.body);
   sendResponse(res, {
     success: true,
@@ -54,9 +53,13 @@ const updateUser = catchAsync(async (req: Request, res: Response) => {
 });
 
 //delete user
-const deleteUser = catchAsync(async (req: Request, res: Response) => {
+const deleteUser = catchAsync(async (req: any, res: Response) => {
+  const myUserId = req.user.id;
   const userId = req.params.id;
-  const deletedUser = await userService.deleteUserIntoDB(parseInt(userId));
+  const deletedUser = await userService.deleteUserIntoDB(
+    parseInt(userId),
+    parseInt(myUserId)
+  );
   sendResponse(res, {
     success: true,
     statusCode: 200,
